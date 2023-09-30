@@ -2,6 +2,8 @@ let input = document.querySelector('#taskInput');
 let addBtn = document.querySelector('#addTaskButton');
 let taskList = document.querySelector('#taskList');
 
+input.focus();
+
 
 let addItem = () => {
     let newItemContainer = document.createElement('div');
@@ -14,11 +16,13 @@ let addItem = () => {
         justify-content: space-between;
     `
     let newItem = document.createElement('p');
+    newItem.style.paddingLeft = "1rem";
     let newPContainer = document.createElement('div');
     newPContainer.style = `
         border: blue solid 2px;    
         width: 40%;
-    `
+    `;
+
     let removeBtn = document.createElement('button');
     let changeBtn = document.createElement('button');
     let isDoneBtn = document.createElement('button');
@@ -38,6 +42,7 @@ let addItem = () => {
     newPContainer.appendChild(newItem);
     newItemContainer.append(isDoneBtn, changeBtn, removeBtn);
 
+
     removeBtn.addEventListener('click', () => {
         removeItem(newItemContainer);
     });
@@ -47,7 +52,7 @@ let addItem = () => {
     });
 
     isDoneBtn.addEventListener('click', () => {
-        isDone(newItemContainer, newItem);
+        isItemDone(newItemContainer, newItem);
     });
 };
 
@@ -60,13 +65,29 @@ let changeItemName = (newItem) => {
     newItem.textContent = newValue;
 };
 
-let isDone = (newItemContainer, newItem) => {
-    newItemContainer.style.backgroundColor = "green";
-    newItem.style.textDecoration = "line-through";
+let isDone = false;
+
+let isItemDone = (newItemContainer, newItem) => {
+    newItemContainer.isDone;
+
+    if (newItemContainer.isDone) {
+        newItemContainer.style.backgroundColor = "transparent";
+        newItem.style.textDecoration = "none";
+    } else {
+        newItemContainer.style.backgroundColor = "green";
+        newItem.style.textDecoration = "line-through";
+    }
+    newItemContainer.isDone = !newItemContainer.isDone;
 };
 
 
 addBtn.addEventListener('click', () => {
    addItem(); 
+});
+
+document.addEventListener('keydown', (event) => {
+    if(event.key === "Enter") {
+        addItem();
+    };
 });
 
