@@ -78,11 +78,12 @@ let isItemDone = (newItemContainer, newItem) => {
         newItemContainer.style.background = "transparent";
         newItem.style.textDecoration = "none";
         newItem.style.color = "black";
+        newItemContainer.style.color = "black";
 
     } else {
         newItemContainer.style.background = `linear-gradient(135deg, rgba(35,60,242,1) 7%, rgba(234,68,82,1) 35%, rgba(36,99,142,1) 96%)`;
         newItem.style.textDecoration = "line-through";
-        newItem.style.color = "white";
+        newItemContainer.style.color = "white";
     }
     newItemContainer.isDone = !newItemContainer.isDone;
 };
