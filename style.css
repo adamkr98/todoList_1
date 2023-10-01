@@ -1,0 +1,146 @@
+
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-color: #192BC2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.todoContainer {
+    height: fit-content;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.inputContainer {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input {
+    width: 75%;
+    height: 2rem;
+    outline: none;
+    padding-left: 1rem;
+}
+
+.addBtn {
+    width: 15%;
+}
+
+.newItemContainer {
+    border-bottom: #2F2F33 solid 1px;
+    background-color: white;
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.newItem {
+    padding-left: 1rem;
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.newPContainer {
+    width: 20rem;
+    display: flex;
+    align-items: center;
+}
+
+.optionContainer {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.removeBtn,
+.changeBtn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.isDoneBtn {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+
+@media (min-width: 350px) {
+    .todoContainer {
+        background-color: white;
+        width: 100%;
+        height: 100vh;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    #taskList {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-items: space-around;
+        align-items: center;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .input {
+        width: 65%;
+        height: 2rem;
+        outline: none;
+        padding-left: 1rem;
+    }
+
+    .addBtn {
+        width: 25%;
+    }
+
+    .newItemContainer {
+        border-bottom: #2F2F33 solid 1px;
+        background-color: white;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+    }
+
+    .newPContainer {
+        width: 70%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (min-width: 720px) {
+    .todoContainer {
+        background-color: white;
+        width: 40rem;
+        height: 90vh;
+        margin: 0 auto;
+    }
+
+    #taskList {
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-items: space-around;
+        align-items: center;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}

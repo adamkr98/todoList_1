@@ -1,92 +1,32 @@
 let input = document.querySelector('#taskInput');
-input.style = `
-    width: 75%;
-    height: 2rem;
-    outline: none;
-
-    padding-left: 1rem;
-`;
 let addBtn = document.querySelector('#addTaskButton');
-addBtn.textContent = "Add new task";
-addBtn.style = `
-    width: 15%;
-`;
 let taskList = document.querySelector('#taskList');
 
 input.focus();
 
-
 let addItem = () => {
     let newItemContainer = document.createElement('div');
-    newItemContainer.style = `
-        border-bottom: #2F2F33 solid 1px;
-        background-color: white;
-        width: 90%;
-        height: fit-content;
+    newItemContainer.classList.add('newItemContainer');
 
-        display: flex;
-        justify-content: space-around;
-
-        align-items: center;
-    `
     let newItem = document.createElement('p');
-    newItem.style = `
-        // border: red solid 2px;
-        padding-left: 1rem;
-
-        font-size: 1rem;
-        font-family: sans-serif;
-    `;
+    newItem.classList.add('newItem');
 
     let newPContainer = document.createElement('div');
-    newPContainer.style = `
-        // border: pink solid 2px;    
-        width: 60%;
-
-        display: flex;
-        align-items: center;
-    `;
+    newPContainer.classList.add('newPContainer');
 
     let removeBtn = document.createElement('i');
-    removeBtn.classList.add('fa-solid',  'fa-trash');
-    removeBtn.style = `
-        // border: blue solid 2px;
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.5rem;
-        cursor: pointer;
-        `;
+    removeBtn.classList.add('fa-solid', 'fa-trash', 'removeBtn');
 
     let changeBtn = document.createElement('i');
-    changeBtn.classList.add('fa-solid',  'fa-pencil');
-    changeBtn.style = `
-        // border: blue solid 2px;
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.5rem;
-        cursor: pointer;
-        `;
+    changeBtn.classList.add('fa-solid', 'fa-pencil', 'changeBtn');
 
     let isDoneBtn = document.createElement('input');
-    isDoneBtn.type="checkbox";
-    // isDoneBtn.classList.add('fa-solid',  'fa-check');
-    isDoneBtn.style = `
-        // border: blue solid 2px;
-        width: 1rem;
-        height: 1rem;
-        // font-size: 1.5rem;
-        cursor: pointer;
-    `;
+    isDoneBtn.type = "checkbox";
+    isDoneBtn.classList.add('isDoneBtn');
 
-
-    // removeBtn.textContent = "Remove";
-    // changeBtn.textContent = "Change name";
-    // isDoneBtn.textContent = "Done";
-
-
-    if( input.value === "" ) {
-        alert('Type something.')
-        return
+    if (input.value === "") {
+        alert('Type something.');
+        return;
     } else {
         newItem.textContent = input.value;
     }
@@ -95,8 +35,12 @@ let addItem = () => {
     taskList.appendChild(newItemContainer);
     newItemContainer.appendChild(newPContainer);
     newPContainer.append(isDoneBtn, newItem);
-    newItemContainer.append(changeBtn, removeBtn);
 
+    let optionContainer = document.createElement('div');
+    optionContainer.classList.add('optionContainer');
+    
+    newItemContainer.appendChild(optionContainer);
+    optionContainer.append(changeBtn, removeBtn);
 
     removeBtn.addEventListener('click', () => {
         removeItem(newItemContainer);
@@ -112,14 +56,14 @@ let addItem = () => {
 };
 
 let removeItem = (newItemContainer) => {
-    newItemContainer.remove()
+    newItemContainer.remove();
 };
 
 let changeItemName = (newItem) => {
     const newValue = prompt('Choose new name');
-    
+
     if (newValue === null) {
-        return
+        return;
     } else {
         newItem.textContent = newValue;
     }
@@ -140,16 +84,12 @@ let isItemDone = (newItemContainer, newItem) => {
     newItemContainer.isDone = !newItemContainer.isDone;
 };
 
-
 addBtn.addEventListener('click', () => {
-   addItem(); 
+    addItem();
 });
 
 document.addEventListener('keydown', (event) => {
-    if(event.key === "Enter") {
+    if (event.key === "Enter") {
         addItem();
-    };
+    }
 });
-
-
-
