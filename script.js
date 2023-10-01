@@ -1,5 +1,16 @@
 let input = document.querySelector('#taskInput');
+input.style = `
+    width: 75%;
+    height: 2rem;
+    outline: none;
+
+    padding-left: 1rem;
+`;
 let addBtn = document.querySelector('#addTaskButton');
+addBtn.textContent = "Add new task";
+addBtn.style = `
+    width: 15%;
+`;
 let taskList = document.querySelector('#taskList');
 
 input.focus();
@@ -8,39 +19,83 @@ input.focus();
 let addItem = () => {
     let newItemContainer = document.createElement('div');
     newItemContainer.style = `
-        border: red solid 2px;
-        width: 100%;
+        border-bottom: #2F2F33 solid 1px;
+        background-color: white;
+        width: 90%;
         height: fit-content;
 
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+
+        align-items: center;
     `
     let newItem = document.createElement('p');
-    newItem.style.paddingLeft = "1rem";
-    let newPContainer = document.createElement('div');
-    newPContainer.style = `
-        border: blue solid 2px;    
-        width: 40%;
+    newItem.style = `
+        // border: red solid 2px;
+        padding-left: 1rem;
+
+        font-size: 1rem;
+        font-family: sans-serif;
     `;
 
-    let removeBtn = document.createElement('button');
-    let changeBtn = document.createElement('button');
-    let isDoneBtn = document.createElement('button');
+    let newPContainer = document.createElement('div');
+    newPContainer.style = `
+        // border: pink solid 2px;    
+        width: 60%;
+
+        display: flex;
+        align-items: center;
+    `;
+
+    let removeBtn = document.createElement('i');
+    removeBtn.classList.add('fa-solid',  'fa-trash');
+    removeBtn.style = `
+        // border: blue solid 2px;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        `;
+
+    let changeBtn = document.createElement('i');
+    changeBtn.classList.add('fa-solid',  'fa-pencil');
+    changeBtn.style = `
+        // border: blue solid 2px;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        `;
+
+    let isDoneBtn = document.createElement('input');
+    isDoneBtn.type="checkbox";
+    // isDoneBtn.classList.add('fa-solid',  'fa-check');
+    isDoneBtn.style = `
+        // border: blue solid 2px;
+        width: 1rem;
+        height: 1rem;
+        // font-size: 1.5rem;
+        cursor: pointer;
+    `;
 
 
+    // removeBtn.textContent = "Remove";
+    // changeBtn.textContent = "Change name";
+    // isDoneBtn.textContent = "Done";
 
-    removeBtn.textContent = "Remove";
-    changeBtn.textContent = "Change name";
-    isDoneBtn.textContent = "Done";
 
-
-    newItem.textContent = input.value;
+    if( input.value === "" ) {
+        alert('Type something.')
+        return
+    } else {
+        newItem.textContent = input.value;
+    }
     input.value = "";
 
     taskList.appendChild(newItemContainer);
     newItemContainer.appendChild(newPContainer);
-    newPContainer.appendChild(newItem);
-    newItemContainer.append(isDoneBtn, changeBtn, removeBtn);
+    newPContainer.append(isDoneBtn, newItem);
+    newItemContainer.append(changeBtn, removeBtn);
 
 
     removeBtn.addEventListener('click', () => {
@@ -62,7 +117,12 @@ let removeItem = (newItemContainer) => {
 
 let changeItemName = (newItem) => {
     const newValue = prompt('Choose new name');
-    newItem.textContent = newValue;
+    
+    if (newValue === null) {
+        return
+    } else {
+        newItem.textContent = newValue;
+    }
 };
 
 let isDone = false;
@@ -74,7 +134,7 @@ let isItemDone = (newItemContainer, newItem) => {
         newItemContainer.style.backgroundColor = "transparent";
         newItem.style.textDecoration = "none";
     } else {
-        newItemContainer.style.backgroundColor = "green";
+        newItemContainer.style.backgroundColor = "#20FC8F";
         newItem.style.textDecoration = "line-through";
     }
     newItemContainer.isDone = !newItemContainer.isDone;
@@ -90,4 +150,6 @@ document.addEventListener('keydown', (event) => {
         addItem();
     };
 });
+
+
 
