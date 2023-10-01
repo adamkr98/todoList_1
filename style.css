@@ -81,25 +81,7 @@ background: linear-gradient(135deg, rgba(35,60,242,1) 7%, rgba(234,68,82,1) 35%,
     cursor: pointer;
 }
 
-/* Scrollbar styles */
-::-webkit-scrollbar {
-    width: 0.8rem;
-}
 
-::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #900C3F;
-    border-radius: 1rem;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #922e54;
-}
-
-/* Media query for screens equal to or larger than 350px */
 @media (min-width: 350px) {
     
     body {
@@ -154,7 +136,6 @@ background: linear-gradient(135deg, rgba(35,60,242,1) 7%, rgba(234,68,82,1) 35%,
     }
 }
 
-/* Media query for screens equal to or larger than 720px */
 @media (min-width: 720px) {
 
     .todoContainer {
@@ -173,5 +154,22 @@ background: linear-gradient(135deg, rgba(35,60,242,1) 7%, rgba(234,68,82,1) 35%,
         align-items: center;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0.8rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #900C3F;
+        border-radius: 1rem;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #922e54;
     }
 }
