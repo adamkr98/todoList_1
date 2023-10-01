@@ -40,6 +40,7 @@ background: linear-gradient(135deg, rgba(35,60,242,1) 7%, rgba(234,68,82,1) 35%,
 
 .newItemContainer {
     border-bottom: #2F2F33 solid 1px;
+    border-radius: 0.2rem;
     background-color: white;
     width: 90%;
     height: fit-content;
@@ -100,11 +101,16 @@ background: linear-gradient(135deg, rgba(35,60,242,1) 7%, rgba(234,68,82,1) 35%,
 
 /* Media query for screens equal to or larger than 350px */
 @media (min-width: 350px) {
+    
+    body {
+        background-color: white;
+        width: 100%;
+    }
+
     .todoContainer {
         background-color: white;
-        border-radius: 0.5rem;
         width: 100%;
-        height: 95vh;
+        height: 100vh;
         padding: 1rem;
         box-sizing: border-box;
         overflow: hidden;
@@ -150,6 +156,7 @@ background: linear-gradient(135deg, rgba(35,60,242,1) 7%, rgba(234,68,82,1) 35%,
 
 /* Media query for screens equal to or larger than 720px */
 @media (min-width: 720px) {
+
     .todoContainer {
         background-color: white;
         width: 40rem;
